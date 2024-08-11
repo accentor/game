@@ -28,7 +28,7 @@ function checkTime() {
   const time = audioElement.value!.currentTime;
   const length = trackInfo.value!.length!;
   
-  progress.value = 100 - (time / length * 100);
+  progress.value = (time / length * 100);
 }
 
 // Every 16ms is ±60fps
@@ -41,8 +41,7 @@ watch(trackInfo, async (newValue) => {
   if (newValue) playing.value = true;
 })
 
-watch(playing, async (newValue, oldValue) => {
-  console.log(newValue, oldValue)
+watch(playing, async (newValue) => {
   if (audioElement.value === null) return;
   try {
     await (newValue ? audioElement.value.play() : audioElement.value.pause());
