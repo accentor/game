@@ -1,0 +1,58 @@
+@import url("./form.css");
+@import url("./page.css");
+@import url("./player.css");
+@import url("./scanner.css");
+@import url("./settings.css");
+
+.button {
+  border-radius: var(--rounded-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: var(--color-primary);
+  border: none;
+  font-size: var(--text-xl);
+  letter-spacing: 1.1;
+  padding: 0.625rem 1.25rem;
+  color: var(--color-white);
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+
+  &:hover {
+    background-color: var(--color-primary-light);
+  }
+
+  &:focus {
+    outline-offset: 2px;
+    outline: var(--color-primary) solid 2px;
+  }
+}
+
+.button__icon {
+  margin-inline-start: auto;
+  height: 1.75rem;
+  stroke-width: 3px;
+}
+
+.button--next {
+  margin-block-start: 1.5rem;
+  margin-block-end: -1.5rem;
+  margin-inline: auto;
+}
+
+.button--sign-out {
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+  background-color: var(--color-white);
+
+  &:hover {
+    color: var(--color-white);
+    background-color: var(--color-accent);
+  }
+
+  &:focus {
+    outline-color: var(--color-accent);
+  }
+}

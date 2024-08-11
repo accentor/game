@@ -1,0 +1,54 @@
+/* Screen breakpoints */
+@custom-media --screen-sm screen and (min-width: 640px);
+@custom-media --screen-md screen and (min-width: 768px);
+@custom-media --screen-lg screen and (min-width: 1024px);
+@custom-media --screen-xl screen and (min-width: 1280px);
+@custom-media --screen-2xl screen and (min-width: 1536px);
+
+/* Preferences */
+@custom-media --motion-ok (prefers-reduced-motion: no-preference);
+@custom-media --motion-not-ok (prefers-reduced-motion: reduce);
+
+:root {
+  /* Colours */
+  --color-white: oklch(100% 0 0);
+  --color-black: oklch(0% 0 0);
+  --color-secondary: oklch(74.41% 0.167 59.6);
+  --color-primary: oklch(37.92% 0.0986296034583502 246.55961336380503);
+  --color-primary-light: oklch(57.21% 0.12 234.48);
+  --color-accent: oklch(45.86% 0.181 27.48);
+  /* --color-grey: hsl(var(--hsl-grey)); */
+
+  /* Screen breakpoints */
+  --screen-sm: 640px;
+  --screen-md: 768px;
+  --screen-lg: 1024px;
+  --screen-xl: 1280px;
+  --screen-2xl: 1536px;
+
+  /* Border radius */
+  --rounded: 0.625rem;
+  --rounded-lg: 1.25rem;
+  --rounded-full: 9999px;
+
+  /* Z-index */
+  --layer-0: 0;
+  --layer-1: 10;
+  --layer-2: 20;
+  --layer-3: 30;
+  --layer-4: 40;
+  --layer-5: 50;
+
+  /* Text size */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+
+  /* Fonts */
+  --font-body: system-ui, sans-serif;
+  --font-title: var(--font-body);
+}

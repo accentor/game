@@ -1,0 +1,48 @@
+.player {
+  display: grid;
+}
+
+.player__progress {
+  grid-column: 1 / 1;
+  grid-row: 1/1;
+  transform: rotate(-90deg);
+}
+
+.player__progress-track {
+  color: var(--color-primary-light);
+}
+
+.player__progress-indicator {
+  color: var(--color-primary);
+}
+
+.player__button {
+  position: relative;
+  z-index: 1;
+  grid-column: 1 / 1;
+  grid-row: 1/1;
+  width: 40%;
+  height: 40%;
+  margin: auto;
+  border-radius: var(--rounded-full);
+  padding: 1.5rem;
+  background-color: transparent;
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+  transition: transform 200ms ease-in-out;
+  cursor: pointer;
+
+  &[data-playing="false"] svg {
+    transform: translateX(0.25rem);
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+  
+  &:focus {
+    outline: var(--color-secondary) solid 2px;
+    outline-offset: 4px;
+    transform: scale(1.1);
+  }
+}

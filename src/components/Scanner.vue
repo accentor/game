@@ -1,0 +1,70 @@
+<script setup lang="ts">
+import { h, reactive, ref, watch } from 'vue';
+import { QrcodeStream } from 'vue-qrcode-reader';
+import type { DetectedBarcode } from 'barcode-detector/pure';
+import { PlayIcon } from '@heroicons/vue/24/solid';
+
+type IdentifiedCode = {
+  left: number,
+  top: number,
+  size: number,
+  trackID: number
+}
+
+const emit = defineEmits(['trackSelected']);
+const identifiedCodes = reactive<Record<number, IdentifiedCode>>({});
+const timeouts: number[] = [];
+
+function identifyCode(code: DetectedBarcode): IdentifiedCode | null {
+  try {
+    const decoded = JSON.parse(atob(code.rawValue));
+    if (Object.keys(decoded).includes("__accentor_game")) {
+        const trackID = +decoded["__accentor_game"];
+        const { left, right, top, bottom, width, height } = code.boundingBox;
+        const size = width > height ? width : height;
+        return { size, trackID, left: left + (right - left) / 2, top: top + (bottom - top) / 2, };
+    }
+  } catch {
+    // If any error occurs while decoding and parsing, we don't have the right QR-code
+    // We simply ignore this and move on.
+  }
+  return null;
+}
+
+function updateCodes(detectedCodes: DetectedBarcode[], _ctx: CanvasRenderingContext2D) {
+  detectedCodes.forEach((code, index) => {
+    const identified = identifyCode(code);
+    if (identified) {
+      identifiedCodes[index] = identified;
+    } else {
+      delete identifiedCodes[index];
+    }
+  });
+}
+
+watch(identifiedCodes, () => {
+  while (timeouts.length) {
+    clearTimeout(timeouts.shift());
+  }
+  timeouts.push(setTimeout(resetCodes, 250));
+})
+
+function resetCodes() {
+  for (const key in identifiedCodes) {
+    delete identifiedCodes[key];
+  }
+}
+
+</script>
+
+<template>
+  <div class="scanner">
+    <qrcode-stream :track="updateCodes"></qrcode-stream>
+    <span class="scanner__play" v-for="code in identifiedCodes"  :style="{ top: `${code?.top}px`, left: `${code?.left}px`, width: `${code?.size}px`, height: `${code?.size}px` }">
+      <button class="scanner__play-button" @click="(e) => $emit('trackSelected', e, code.trackID)" v-if="code"  :data-id="code.trackID">
+        <PlayIcon />
+      </button>
+    </span>
+  </div>
+</template>
+
