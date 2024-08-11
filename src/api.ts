@@ -1,13 +1,12 @@
 import { createApiClient } from "@accentor/api-client-js";
 
 let url;
-if (import.meta.env.VUE_APP_API_URL !== undefined) {
-  url = import.meta.env.VUE_APP_API_URL;
+if (import.meta.env.VITE_API_URL !== undefined) {
+  url = import.meta.env.VITE_API_URL;
 } else if (import.meta.env.NODE_ENV === "production") {
   url = "/api";
 } else {
-  // url = "http://localhost:3000/api";
-  url = "https://accentor.vanpetegem.me/api";
+  url = "http://localhost:3000/api";
 }
 
 export const baseURL = url;
