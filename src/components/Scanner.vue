@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { h, reactive, ref, watch } from 'vue';
+import { reactive, watch } from 'vue';
 import { QrcodeStream } from 'vue-qrcode-reader';
 import type { DetectedBarcode } from 'barcode-detector/pure';
 import { PlayIcon } from '@heroicons/vue/24/solid';
