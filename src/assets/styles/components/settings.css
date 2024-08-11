@@ -23,6 +23,7 @@
 }
 
 .settings__content {
+  z-index: var(--layer-1);
   background-color: var(--color-white);
   position: absolute;
   top: calc(100% + 0.75rem);
