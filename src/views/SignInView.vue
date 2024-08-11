@@ -11,7 +11,6 @@ async function handleSubmit(event: Event) {
   event.preventDefault();
 
   const data = new FormData(event.target as HTMLFormElement);
-  console.log(data);
   const name = data.get('session[name]') as string;
   const password = data.get('session[password]') as string;
   if (name.length === 0 || password.length === 0) {

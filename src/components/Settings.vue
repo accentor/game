@@ -14,7 +14,6 @@
   }
 
   function handleClick(event: MouseEvent) {
-    console.log(event);
     if (detailsElement.value && !detailsElement.value.contains(event.target as HTMLElement)) detailsElement.value.open = false;
   }
 
