@@ -49,6 +49,6 @@
   --text-3xl: 2rem;
 
   /* Fonts */
-  --font-body: system-ui, sans-serif;
+  --font-body: "KoHo", system-ui, sans-serif;
   --font-title: var(--font-body);
 }
