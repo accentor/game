@@ -40,7 +40,8 @@ export const useSettingsStore = defineStore<"settings", StateInterface, {}, Stat
     sign_out() {
       this.$patch({ auth: null });
       localStorage.clear();
-      window.location.reload;
+      // Force reload to get rid of the current state
+      window.location.reload();
     }
   }
 });
