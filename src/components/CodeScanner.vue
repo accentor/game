@@ -24,6 +24,7 @@ setZXingModuleOverrides({
 const emit = defineEmits(["trackSelected"]);
 const identifiedCodes = reactive<Record<number, IdentifiedCode>>({});
 const errorMessage = ref<string | null>(null);
+const scannerInitialized = ref<boolean>(false);
 const timeouts: number[] = [];
 
 function identifyCode(code: DetectedBarcode): IdentifiedCode | null {
@@ -87,11 +88,16 @@ function handleError(error: Error) {
 </script>
 
 <template>
-  <div class="scanner">
+  <div class="scanner" :class="{ 'scanner--loading': !scannerInitialized }">
     <div v-if="errorMessage" class="scanner__error error">
       {{ t(`scanner.errors.${errorMessage}`) }}
     </div>
-    <qrcode-stream :track="updateCodes" @error="handleError"></qrcode-stream>
+    <qrcode-stream
+      :track="updateCodes"
+      @error="handleError"
+      @camera-on="scannerInitialized = true"
+      @camera-off="scannerInitialized = false"
+    ></qrcode-stream>
     <span
       v-for="code in identifiedCodes"
       :key="code.trackID"
