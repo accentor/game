@@ -1,0 +1,14 @@
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-white);
+  font-size: var(--text-2xl);
+  padding: 2rem 1.5rem;
+  margin: auto;
+  border: 3px solid var(--color-accent);
+  color: var(--color-accent);
+  border-radius: var(--rounded-lg);
+  box-shadow: var(--shadow);
+  font-weight: 700;
+}

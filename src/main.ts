@@ -5,10 +5,11 @@ import App from "./App.vue";
 import GameView from "./views/GameView.vue";
 import SignInView from "./views/SignInView.vue";
 import { createPinia } from "pinia";
+import { i18n } from "./locales";
 import { useSettingsStore } from "./store";
 
 const pinia = createPinia();
-const app = createApp(App).use(pinia);
+const app = createApp(App).use(pinia).use(i18n);
 
 const settingsStore = useSettingsStore();
 

@@ -22,6 +22,7 @@
     "typescript": "^5.2.2",
     "vite": "^5.4.0",
     "vue": "^3.4.38",
+    "vue-i18n": "^9.13.1",
     "vue-qrcode-reader": "^5.5.7",
     "vue-router": "^4.4.3",
     "vue-tsc": "^2.0.6"
@@ -38,8 +39,12 @@
     "typescript-eslint": "^8.1.0"
   },
   "stylelint": {
-    "extends": ["stylelint-config-standard"],
-    "plugins": ["stylelint-prettier"],
+    "extends": [
+      "stylelint-config-standard"
+    ],
+    "plugins": [
+      "stylelint-prettier"
+    ],
     "rules": {
       "declaration-no-important": true,
       "prettier/prettier": true,

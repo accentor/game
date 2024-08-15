@@ -1,0 +1,12 @@
+{
+  "scanner": {
+    "errors": {
+      "NotAllowedError": "This app needs camera permissions to work. Please enable this and try again",
+      "NotFoundError": "Could not find a camera, or the camera does not seem to work.",
+      "NotSupportedError": "Could not find a camera, or the camera does not seem to work.",
+      "NotReadableError": "Your camera does not seem to work. Check if no other app is using it.",
+      "OverconstrainedError": "Could not find a camera, or the camera does not seem to work.",
+      "StreamApiNotSupportedError": "Could not find a camera, or the camera does not seem to work."
+    }
+  }
+}

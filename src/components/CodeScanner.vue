@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { reactive, watch } from "vue";
+import { reactive, ref, watch } from "vue";
 import { QrcodeStream, setZXingModuleOverrides } from "vue-qrcode-reader";
 import type { DetectedBarcode } from "barcode-detector/pure";
 import { PlayIcon } from "@heroicons/vue/24/solid";
 import zxingWasmLib from "zxing-wasm/reader/zxing_reader.wasm?url";
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
 
 type IdentifiedCode = {
   left: number;
@@ -21,6 +23,7 @@ setZXingModuleOverrides({
 
 const emit = defineEmits(["trackSelected"]);
 const identifiedCodes = reactive<Record<number, IdentifiedCode>>({});
+const errorMessage = ref<string | null>(null);
 const timeouts: number[] = [];
 
 function identifyCode(code: DetectedBarcode): IdentifiedCode | null {
@@ -67,11 +70,28 @@ function resetCodes() {
     delete identifiedCodes[key];
   }
 }
+
+function handleError(error: Error) {
+  const handledErrors = [
+    "NotAllowedError",
+    "NotFoundError",
+    "NotSupportedError",
+    "NotReadableError",
+    "OverconstrainedError",
+    "StreamApiNotSupportedError",
+  ];
+  errorMessage.value = handledErrors.includes(error.name)
+    ? error.name
+    : "unknown";
+}
 </script>
 
 <template>
   <div class="scanner">
-    <qrcode-stream :track="updateCodes"></qrcode-stream>
+    <div v-if="errorMessage" class="scanner__error error">
+      {{ t(`scanner.errors.${errorMessage}`) }}
+    </div>
+    <qrcode-stream :track="updateCodes" @error="handleError"></qrcode-stream>
     <span
       v-for="code in identifiedCodes"
       :key="code.trackID"

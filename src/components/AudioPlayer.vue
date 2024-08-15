@@ -104,7 +104,7 @@ const classObject = computed(() => ({
       <PauseIcon v-if="playing" />
       <PlayIcon v-else />
     </button>
-    <p v-if="errorState !== ErrorState.None" class="player__error">
+    <p v-if="errorState !== ErrorState.None" class="player__error error">
       {{ errorState }}
     </p>
   </div>
