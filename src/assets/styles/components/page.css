@@ -4,6 +4,7 @@
   grid-template-areas: "header" "contents" "footer";
   height: 100vh;
   padding: 1.5rem 1.25rem;
+  gap: 2rem;
 
   @supports (height: 100dvh) {
     height: 100dvh;
@@ -14,9 +15,23 @@
   display: flex;
   justify-content: end;
   grid-area: header;
+
+  @media (--screen-md) {
+    width: var(--screen-md);
+    margin-inline: auto;
+  }
+
+  @media (--screen-lg) {
+    width: calc(var(--screen-lg) - 2rem);
+  }
 }
 
 .page__contents {
   align-self: center;
   grid-area: contents;
+
+  @media (--screen-md) {
+    width: calc(var(--screen-md) - 2rem);
+    margin-inline: auto;
+  }
 }
