@@ -2,7 +2,6 @@
   display: grid;
 }
 
-
 .player__progress {
   grid-column: 1 / 1;
   grid-row: 1/1;
@@ -40,7 +39,7 @@
   &:hover {
     transform: scale(1.1);
   }
-  
+
   &:focus {
     outline: var(--color-secondary) solid 2px;
     outline-offset: 4px;
@@ -52,7 +51,6 @@
     cursor: default;
   }
 }
-
 
 .player--error,
 .player--loading {

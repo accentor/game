@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { AuthInterface } from "@accentor/api-client-js/src/types/auth";
 
-const SETTINGS_LOCAL_STORAGE_KEY = 'settings';
+const SETTINGS_LOCAL_STORAGE_KEY = "settings";
 
 interface StateInterface {
   auth: null | AuthInterface;
@@ -9,11 +9,17 @@ interface StateInterface {
 }
 
 interface StateActions {
-  update: (partialState: Partial<StateInterface>) => void,
-  sign_out: () => void,
+  update: (partialState: Partial<StateInterface>) => void;
+  sign_out: () => void;
 }
 
-export const useSettingsStore = defineStore<"settings", StateInterface, {}, StateActions>("settings", {
+export const useSettingsStore = defineStore<
+  "settings",
+  StateInterface,
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
+  {},
+  StateActions
+>("settings", {
   state: () => {
     const defaultState = {
       auth: null,
@@ -42,6 +48,6 @@ export const useSettingsStore = defineStore<"settings", StateInterface, {}, Stat
       localStorage.clear();
       // Force reload to get rid of the current state
       window.location.reload();
-    }
-  }
+    },
+  },
 });

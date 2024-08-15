@@ -32,5 +32,5 @@
   border-radius: var(--rounded-lg);
   min-width: 14rem;
   padding: 1rem 0.75rem;
-  box-shadow: var(--shadow)
+  box-shadow: var(--shadow);
 }

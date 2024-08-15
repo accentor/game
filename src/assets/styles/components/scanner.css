@@ -2,7 +2,7 @@
   position: relative;
   aspect-ratio: 1;
   border-radius: var(--rounded-lg);
-  overflow: hidden;;
+  overflow: hidden;
 }
 
 .scanner__play {
@@ -47,6 +47,11 @@
 }
 
 @keyframes spin {
-  from {transform: rotate(0);}
-  to   {transform: rotate(360deg);}
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }

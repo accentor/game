@@ -11,12 +11,13 @@
 
 :root {
   /* Colours */
-  --color-white: oklch(100% 0 0);
-  --color-black: oklch(0% 0 0);
-  --color-secondary: oklch(74.41% 0.167 59.6);
-  --color-primary: oklch(37.92% 0.0986296034583502 246.55961336380503);
-  --color-primary-light: oklch(57.21% 0.12 234.48);
-  --color-accent: oklch(45.86% 0.181 27.48);
+  --color-white: oklch(100% 0 0deg);
+  --color-black: oklch(0% 0 0deg);
+  --color-secondary: oklch(74.41% 0.167 59.6deg);
+  --color-primary: oklch(37.92% 0.0986 246.5596deg);
+  --color-primary-light: oklch(57.21% 0.12 234.48deg);
+  --color-accent: oklch(45.86% 0.181 27.48deg);
+
   /* --color-grey: hsl(var(--hsl-grey)); */
 
   /* Screen breakpoints */
@@ -53,5 +54,6 @@
   --font-title: var(--font-body);
 
   /* Shadow */
-  --shadow: 0 1px 3px 0 oklch(0% 0 0 / 0.1), 0 1px 2px -1px oklch(0% 0 0 / 0.1);
+  --shadow: 0 1px 3px 0 oklch(0% 0 0deg / 10%),
+    0 1px 2px -1px oklch(0% 0 0deg / 10%);
 }

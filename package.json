@@ -2,11 +2,16 @@
   "name": "game",
   "private": true,
   "version": "0.0.0",
+  "author": "Robbe Van Petegem <git@robbevp.be>",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:fix": "npm run lint:js -- --fix && npm run lint:css -- --fix",
+    "lint:js": "eslint",
+    "lint:css": "stylelint '**/*.css' --ignore-path .gitignore"
   },
   "dependencies": {
     "@accentor/api-client-js": "^0.20.1",
@@ -20,5 +25,31 @@
     "vue-qrcode-reader": "^5.5.7",
     "vue-router": "^4.3.2",
     "vue-tsc": "^2.0.6"
+  },
+  "devDependencies": {
+    "eslint": "^9.9.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-vue": "^9.27.0",
+    "prettier": "^3.3.3",
+    "stylelint": "^16.8.1",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-prettier": "^5.0.2",
+    "typescript-eslint": "^8.1.0"
+  },
+  "stylelint": {
+    "extends": ["stylelint-config-standard"],
+    "plugins": ["stylelint-prettier"],
+    "rules": {
+      "declaration-no-important": true,
+      "prettier/prettier": true,
+      "selector-class-pattern": [
+        "^[a-z]+(:)?[a-z]+-?[a-z]*(__[0-9a-z]+-?[0-9a-z]*)?(--[0-9a-z]+-?[a-z]*)?$",
+        {
+          "resolveNestedSelectors": true,
+          "message": "Expected class selector to be BEM-style"
+        }
+      ]
+    }
   }
 }
