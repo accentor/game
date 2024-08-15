@@ -20,7 +20,7 @@ const router = createRouter({
   ],
 });
 
-router.beforeEach(async (to, _from) => {
+router.beforeEach(async (to) => {
   if (settingsStore.auth === null && to.name !== "SignIn") {
     return { name: "SignIn" };
   }
