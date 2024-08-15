@@ -77,6 +77,31 @@
   }
 }
 
+.scanner__camera-switch {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  width: 3rem;
+  height: 3rem;
+  z-index: var(--layer-1);
+  border-radius: var(--rounded-full);
+  padding: 0.75rem;
+  border: none;
+  color: var(--color-primary);
+  background-color: oklch(100% 0 0deg / 50%);
+  cursor: pointer;
+
+  &:hover {
+    background-color: oklch(100% 0 0deg / 80%);
+  }
+
+  &:focus {
+    background-color: oklch(100% 0 0deg / 80%);
+    outline: oklch(100% 0 0deg / 80%) solid 2px;
+    outline-offset: 2px;
+  }
+}
+
 @keyframes spin {
   from {
     transform: translate(var(--translate, 0), var(--translate, 0)) rotate(0);

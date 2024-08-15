@@ -5,6 +5,7 @@ import type { DetectedBarcode } from "barcode-detector/pure";
 import { PlayIcon } from "@heroicons/vue/24/solid";
 import zxingWasmLib from "zxing-wasm/reader/zxing_reader.wasm?url";
 import { useI18n } from "vue-i18n";
+import { VideoCameraIcon } from "@heroicons/vue/24/outline";
 const { t } = useI18n();
 
 type IdentifiedCode = {
@@ -12,6 +13,11 @@ type IdentifiedCode = {
   top: number;
   size: number;
   trackID: number;
+};
+
+type deviceConstraints = {
+  deviceId?: string;
+  facingMode?: string;
 };
 
 setZXingModuleOverrides({
@@ -25,6 +31,15 @@ const emit = defineEmits(["trackSelected"]);
 const identifiedCodes = reactive<Record<number, IdentifiedCode>>({});
 const errorMessage = ref<string | null>(null);
 const scannerInitialized = ref<boolean>(false);
+const selectedConstraints = ref<deviceConstraints>({
+  facingMode: "environment",
+});
+const constraintOptions = ref<
+  Array<{
+    label: string;
+    constraints: deviceConstraints;
+  }>
+>([]);
 const timeouts: number[] = [];
 
 function identifyCode(code: DetectedBarcode): IdentifiedCode | null {
@@ -85,6 +100,32 @@ function handleError(error: Error) {
     ? error.name
     : "unknown";
 }
+
+async function onReady() {
+  scannerInitialized.value = true;
+  const devices = await navigator.mediaDevices.enumerateDevices();
+  const videoDevices = devices.filter(({ kind }) => kind === "videoinput");
+
+  constraintOptions.value = [
+    ...videoDevices.map(({ deviceId, label }) => ({
+      label,
+      constraints: { deviceId },
+    })),
+  ];
+}
+
+function selectNextDevice() {
+  const currentIndex = constraintOptions.value.findIndex(
+    (c) => c.constraints === selectedConstraints.value,
+  );
+  const next =
+    constraintOptions.value[
+      (currentIndex + 1) % constraintOptions.value.length
+    ];
+  selectedConstraints.value = next.constraints || {
+    facingMode: "environment",
+  };
+}
 </script>
 
 <template>
@@ -94,8 +135,9 @@ function handleError(error: Error) {
     </div>
     <qrcode-stream
       :track="updateCodes"
+      :constraints="selectedConstraints"
       @error="handleError"
-      @camera-on="scannerInitialized = true"
+      @camera-on="onReady"
       @camera-off="scannerInitialized = false"
     ></qrcode-stream>
     <span
@@ -118,5 +160,12 @@ function handleError(error: Error) {
         <PlayIcon />
       </button>
     </span>
+    <button
+      v-if="constraintOptions.length > 1"
+      class="scanner__camera-switch"
+      @click="selectNextDevice"
+    >
+      <VideoCameraIcon />
+    </button>
   </div>
 </template>
