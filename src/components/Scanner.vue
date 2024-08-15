@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { reactive, watch } from 'vue';
-import { QrcodeStream } from 'vue-qrcode-reader';
+import { QrcodeStream, setZXingModuleOverrides } from 'vue-qrcode-reader';
 import type { DetectedBarcode } from 'barcode-detector/pure';
 import { PlayIcon } from '@heroicons/vue/24/solid';
+import zxingWasmLib from "zxing-wasm/reader/zxing_reader.wasm?url"
 
 type IdentifiedCode = {
   left: number,
@@ -10,6 +11,13 @@ type IdentifiedCode = {
   size: number,
   trackID: number
 }
+
+setZXingModuleOverrides({
+  locateFile: (path, prefix) => {
+    if (path.endsWith(".wasm")) return zxingWasmLib;
+    return prefix + path;
+  },
+});
 
 const emit = defineEmits(['trackSelected']);
 const identifiedCodes = reactive<Record<number, IdentifiedCode>>({});
