@@ -84,16 +84,17 @@ onMounted(async () => {
 onUnmounted(() => {
   clearInterval(interval);
 });
-
-const classObject = computed(() => ({
-  "player--loading": trackInfo.value !== null,
-  "player--error": errorState.value !== ErrorState.None,
-}));
 </script>
 
 <template>
   <audio ref="audioElement" :src="audioURL" class=""></audio>
-  <div class="player" :class="classObject">
+  <div
+    class="player"
+    :class="{
+      'player--loading': trackInfo === null,
+      'player--error': errorState !== ErrorState.None,
+    }"
+  >
     <Progress :progress="progress"></Progress>
     <button
       class="player__button"

@@ -20,7 +20,12 @@
   border-bottom-color: transparent;
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  animation: spin 1s linear infinite;
+
+  @media (--motion-ok) {
+    --translate: -50%;
+
+    animation: spin 1s linear infinite;
+  }
 }
 
 .scanner__play {
@@ -74,10 +79,11 @@
 
 @keyframes spin {
   from {
-    transform: rotate(0);
+    transform: translate(var(--translate, 0), var(--translate, 0)) rotate(0);
   }
 
   to {
-    transform: rotate(360deg);
+    transform: translate(var(--translate, 0), var(--translate, 0))
+      rotate(360deg);
   }
 }
