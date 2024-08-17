@@ -1,8 +1,11 @@
 {
-  "name": "game",
-  "private": true,
-  "version": "0.0.0",
-  "author": "Robbe Van Petegem <git@robbevp.be>",
+  "name": "@accentor/game",
+  "version": "0.1.0",
+  "author": "Team Accentor <team@accentor.tech>",
+  "contributors": [
+    "Robbe Van Petegem <git@robbevp.be>"
+  ],
+  "license": "Hippocratic-2.0",
   "type": "module",
   "scripts": {
     "dev": "vite",

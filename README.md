@@ -1,9 +1,58 @@
-# Vue 3 + TypeScript + Vite
+# Accentor Game aka Charlotte's Song
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Charlotte's Song is a small card game that requires you to identify music from your own collection.
 
-## Recommended Setup
+## Why use Accentor?
 
-- [VS Code](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (previously Volar) and disable Vetur
+Accentor gives you complete control over your music. You can build
+your own collection (with good old CD's, bandcamp downloads, ...) in
+the sound quality that you want and stream it either through the [web
+frontend](https://github.com/accentor/web) or the [android app](https://github.com/accentor/android).
 
-- Use [vue-tsc](https://github.com/vuejs/language-tools/tree/master/packages/tsc) for performing the same type checking from the command line, or for generating d.ts files for SFCs.
+Accentor is focused on metadata. We allow you to add detailed metadata
+to your music collection, beyond what the tags inside an audio file
+are capable of. Album and tracks can have multiple artists with a
+different name on different albums/tracks, albums can have multiple
+labels and tracks can have multiple genres.
+
+The metadata is completely in your control: you can edit it however you want.
+
+## How to deploy
+
+To use the web frontend, you already need to have an API running. You
+can read how to do that [here](https://github.com/accentor/api).
+
+### Use a hosting service for static sites
+
+The project can be deployed to a static site hoster like Netlify.
+You only need the following three things:
+* An environment variable for `VITE_API_URL` pointing to the domain of your api.
+* Build command: `npm run build`.
+* Output directory: `dist/`.
+
+## Local development
+
+To run and develop locally:
+1. Install all dependencies with `npm install`.
+2. Compile with hot-reloads using `npm run dev`.
+
+You will also need an API to interact with. For this you can
+* [Run the API locally](https://github.com/accentor/api) (Recommended)
+* Set an environment variable for `VITE_API_URL` pointing to an
+  existing API.
+
+## Creating cards
+Cards to play this game should have an QR-code on one side and the song's info on the other.
+![Example of some cards in different colors](./docs/example_cards.jpg)
+
+The QR-code should contain a base64 encoded reference a track's id. You can generate the content for the QR-code using [this ruby script](./scripts/prepare_qr_codes.rb).
+
+## Help
+
+Have a question? You can ask it through [GitHub
+discussions](https://github.com/accentor/web/discussions) or in the
+[Matrix channel](https://matrix.to/#/!PCYHOaWItkVRNacTSv:vanpetegem.me?via=vanpetegem.me&via=matrix.org).
+
+Think you have noticed a bug or have a great idea for a feature?
+[Create an issue](https://github.com/accentor/game/issues).
+
