@@ -18,7 +18,12 @@ async function handleSubmit(event: Event) {
     return;
   }
   try {
-    const auth = await api.auth_tokens.create({ name, password });
+    const auth = await api.auth_tokens.create({
+      name,
+      password,
+      // eslint-disable-next-line no-undef
+      auth_token: { application: APPLICATION_VERSION },
+    });
     store.update({ auth });
     router.push("/");
   } catch {
