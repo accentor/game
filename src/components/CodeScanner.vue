@@ -78,7 +78,7 @@ watch(identifiedCodes, () => {
   while (timeouts.length) {
     clearTimeout(timeouts.shift());
   }
-  timeouts.push(setTimeout(resetCodes, 250));
+  timeouts.push(window.setTimeout(resetCodes, 250));
 });
 
 function resetCodes() {
