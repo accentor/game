@@ -14,7 +14,7 @@
   background-color: var(--color-primary);
   border: none;
   font-size: var(--text-xl);
-  letter-spacing: 1.1;
+  letter-spacing: 1.1em;
   padding: 0.625rem 1.25rem;
   color: var(--color-white);
   font-weight: 500;
