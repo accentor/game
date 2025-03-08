@@ -3,6 +3,7 @@ import eslint from "@eslint/js";
 import prettierPlugin from "eslint-plugin-prettier/recommended";
 import tseslint from "typescript-eslint";
 import pluginVue from "eslint-plugin-vue";
+import globals from "globals";
 
 export default tseslint.config(
   eslint.configs.recommended,
@@ -19,6 +20,9 @@ export default tseslint.config(
         project: "./tsconfig.json",
         extraFileExtensions: [".vue"],
         sourceType: "module",
+      },
+      globals: {
+        ...globals.browser,
       },
     },
     rules: {
