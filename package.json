@@ -20,7 +20,7 @@
     "@accentor/api-client-js": "^0.21.0",
     "@heroicons/vue": "^2.2.0",
     "@vitejs/plugin-vue": "^5.2.1",
-    "lightningcss": "^1.29.2",
+    "lightningcss": "^1.29.3",
     "pinia": "^2.3.0",
     "typescript": "^5.8.2",
     "vite": "^6.2.4",
