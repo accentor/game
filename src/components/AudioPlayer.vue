@@ -25,7 +25,7 @@ const playing = ref(false);
 const trackInfo = ref<Track | null>(null);
 const audioURL = computed(
   () =>
-    `${baseURL}/tracks/${props.trackId}/audio?secret=${settingsStore.auth?.secret}&device_id=${settingsStore.auth?.device_id}&codec_conversion_id=${settingsStore.codecConversionID || ""}`,
+    `${baseURL}/tracks/${props.trackId}/audio?token=${settingsStore.auth}&codec_conversion_id=${settingsStore.codecConversionID || ""}`,
 );
 const progress = ref<number>(100);
 const errorState = ref(ErrorState.None);
