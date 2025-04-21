@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CodecConversion } from "@accentor/api-client-js/src/types/codec_conversion";
+import { CodecConversion } from "@accentor/api-client-js";
 import { Cog6ToothIcon } from "@heroicons/vue/24/outline";
 import { onMounted, onUnmounted, ref } from "vue";
 import api from "../api";

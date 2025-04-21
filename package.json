@@ -17,7 +17,7 @@
     "lint:css": "stylelint '**/*.css' --ignore-path .gitignore"
   },
   "dependencies": {
-    "@accentor/api-client-js": "^0.21.0",
+    "@accentor/api-client-js": "^0.23.3",
     "@heroicons/vue": "^2.2.0",
     "@vitejs/plugin-vue": "^5.2.3",
     "lightningcss": "^1.29.3",

@@ -1,10 +1,10 @@
 import { defineStore } from "pinia";
-import { AuthInterface } from "@accentor/api-client-js/src/types/auth";
+import { ApiToken } from "@accentor/api-client-js";
 
 const SETTINGS_LOCAL_STORAGE_KEY = "settings";
 
 interface StateInterface {
-  auth: null | AuthInterface;
+  auth: null | ApiToken;
   codecConversionID: null | number;
 }
 

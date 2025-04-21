@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch, onUnmounted } from "vue";
 import api, { baseURL } from "../api";
-import { Track } from "@accentor/api-client-js/src/types/track";
+import { Track } from "@accentor/api-client-js";
 import { PlayIcon, PauseIcon } from "@heroicons/vue/24/outline";
 import Progress from "./ProgressCircle.vue";
 import { ArrowRightIcon } from "@heroicons/vue/24/outline";
@@ -25,7 +25,7 @@ const playing = ref(false);
 const trackInfo = ref<Track | null>(null);
 const audioURL = computed(
   () =>
-    `${baseURL}/tracks/${props.trackId}/audio?secret=${settingsStore.auth?.secret}&device_id=${settingsStore.auth?.device_id}&codec_conversion_id=${settingsStore.codecConversionID || ""}`,
+    `${baseURL}/tracks/${props.trackId}/audio?token=${settingsStore.auth}&codec_conversion_id=${settingsStore.codecConversionID || ""}`,
 );
 const progress = ref<number>(100);
 const errorState = ref(ErrorState.None);

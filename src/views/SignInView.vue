@@ -18,13 +18,13 @@ async function handleSubmit(event: Event) {
     return;
   }
   try {
-    const auth = await api.auth_tokens.create({
+    const { token } = await api.auth_tokens.create({
       name,
       password,
       // eslint-disable-next-line no-undef
       auth_token: { application: APPLICATION_VERSION },
     });
-    store.update({ auth });
+    store.update({ auth: token });
     router.push("/");
   } catch {
     error.value = "Username and password don't match";
