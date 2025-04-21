@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch, onUnmounted } from "vue";
 import api, { baseURL } from "../api";
-import { Track } from "@accentor/api-client-js/src/types/track";
+import { Track } from "@accentor/api-client-js";
 import { PlayIcon, PauseIcon } from "@heroicons/vue/24/outline";
 import Progress from "./ProgressCircle.vue";
 import { ArrowRightIcon } from "@heroicons/vue/24/outline";
