@@ -19,7 +19,7 @@
   "dependencies": {
     "@accentor/api-client-js": "^0.23.3",
     "@heroicons/vue": "^2.2.0",
-    "@vitejs/plugin-vue": "^5.2.3",
+    "@vitejs/plugin-vue": "^5.2.4",
     "lightningcss": "^1.29.3",
     "pinia": "^3.0.2",
     "typescript": "^5.8.3",
