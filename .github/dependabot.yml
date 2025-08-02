@@ -15,12 +15,8 @@ updates:
         - "stylelint-*"
         - "typescript-eslint"
   open-pull-requests-limit: 10
-  reviewers:
-  - robbevp
 - package-ecosystem: github-actions
   directory: "/"
   schedule:
      interval: monthly
   open-pull-requests-limit: 10
-  reviewers:
-  - robbevp
