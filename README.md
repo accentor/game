@@ -30,6 +30,10 @@ You only need the following three things:
 * Build command: `npm run build`.
 * Output directory: `dist/`.
 
+If at some point the trackID on a card is no longer valid (because the track has been merged),
+you can deploy the project with the `VITE_TRACK_MAP` environment variable and provide the old
+and new trackID. This expects the trackIDs in the following format: `OLD_ID1:NEW_ID1;OLD_ID2:NEW_ID2`.
+
 ## Local development
 
 To run and develop locally:
