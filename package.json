@@ -25,7 +25,7 @@
     "typescript": "^5.9.3",
     "vite": "^7.3.2",
     "vue": "^3.5.32",
-    "vue-i18n": "^11.2.8",
+    "vue-i18n": "^11.3.1",
     "vue-qrcode-reader": "^5.7.3",
     "vue-router": "^5.0.4",
     "vue-tsc": "^3.2.6"
