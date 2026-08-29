@@ -8,12 +8,14 @@ updates:
   groups:
     linting:
       patterns:
+        - "@eslint/*"
         - "eslint"
         - "eslint-*"
         - "prettier"
         - "stylelint"
         - "stylelint-*"
         - "typescript-eslint"
+        - "vue-eslint-parser"
   open-pull-requests-limit: 10
 - package-ecosystem: github-actions
   directory: "/"
