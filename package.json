@@ -27,7 +27,7 @@
     "vue": "^3.5.41",
     "vue-i18n": "^11.4.10",
     "vue-qrcode-reader": "^5.7.3",
-    "vue-router": "^5.2.0",
+    "vue-router": "^5.3.0",
     "vue-tsc": "^3.3.11"
   },
   "devDependencies": {
